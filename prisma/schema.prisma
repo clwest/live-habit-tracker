@@ -10,8 +10,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // Pooled connection for serverless runtime (Next.js on Vercel).
+  url       = env("DATABASE_URL")
+  // Direct connection for migrations (bypasses PgBouncer).
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 model User {
