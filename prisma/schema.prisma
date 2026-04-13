@@ -5,10 +5,12 @@
 // - UNIQUE(habitId, date) prevents double-marking the same day
 
 generator client {
-  provider      = "prisma-client"
-  output        = "../src/generated/prisma"
-  // rhel-openssl-3.0.x is required for Vercel Node.js runtime;
-  // native is needed for local macOS dev.
+  // Using legacy prisma-client-js generator (default node_modules/.prisma/client
+  // output) — Next.js outputFileTracing handles the engine binary copy
+  // automatically. The new 'prisma-client' generator with a custom src/
+  // output path works locally but Next doesn't trace the binary into the
+  // Vercel function bundle, causing PrismaClientInitializationError at runtime.
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
