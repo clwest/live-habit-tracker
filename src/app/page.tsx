@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 bg-zinc-50 px-6 py-24 text-center font-sans dark:bg-black">
@@ -10,8 +12,22 @@ export default function Home() {
         </h1>
         <p className="max-w-md text-base text-zinc-600 dark:text-zinc-400">
           A minimal, production-minded habit tracker — scaffolded and deployed
-          on stream. Auth + dashboard coming next.
+          on stream.
         </p>
+        <div className="mt-2 flex gap-3">
+          <Link
+            href="/signup"
+            className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+          >
+            Get started
+          </Link>
+          <Link
+            href="/signin"
+            className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          >
+            Sign in
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
